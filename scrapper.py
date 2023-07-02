@@ -1,6 +1,5 @@
 import requests
 from bs4 import BeautifulSoup
-import sqlite3 as sql
 
 #Check how much proceedings is active
 def active_proceedings():
@@ -15,9 +14,8 @@ def active_proceedings():
 
     for row in rows:
         cells = row.find_all('td')
-        print (cells[1].text)
+        name = cells[1].text
         counter += 1
     
-    print(counter)
-
+    return counter
 active_proceedings()
