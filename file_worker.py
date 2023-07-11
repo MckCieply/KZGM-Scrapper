@@ -12,7 +12,6 @@ def file_check(new_length):
 
         #if its the same lenght, its checking for diffrences between saved state and scrapped state
         else:
-            if(old_proceedings == active_proceedings):
-                print("It's alright")
-            else:
-                print("It's not alright")
+            if(old_proceedings != active_proceedings):
+                for element in active_proceedings:
+                    f.write(element)
