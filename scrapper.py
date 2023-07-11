@@ -24,6 +24,6 @@ def names_of_proceedings():
     for row in rows:
         cells = row.find_all('td')
         name = cells[1].text
-        proceedings.append(name)
+        proceedings.append(name+"\n")
     return proceedings
 

@@ -1,5 +1,5 @@
-from scrapper import active_proceedings
-from file_worker import file_update
+from scrapper import count_of_proceedings
+from file_worker import file_check
 
-new_length = active_proceedings()
-file_update(new_length)
+new_length = count_of_proceedings()
+file_check(new_length)
