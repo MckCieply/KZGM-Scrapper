@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-#Check how much proceedings is active
-def active_proceedings():
+#Establish connection and scrape rows
+def scrapper_innit():
     URL = "https://platformazakupowa.pl/pn/kzgm_katowice/proceedings"
     request = requests.get(URL)
     soup = BeautifulSoup(request.content, 'html.parser')
@@ -10,12 +10,20 @@ def active_proceedings():
     table = soup.find('table', {"class":"table table-hover"})
     tbody = table.find('tbody')
     rows = tbody.find_all('tr')
-    counter = 0
+    return rows
 
+#check how much rows does it contain
+def count_of_proceedings():
+    rows = scrapper_innit() 
+    return len(rows)
+
+#create list of active proceedings
+def names_of_proceedings():
+    proceedings = []
+    rows = scrapper_innit()
     for row in rows:
         cells = row.find_all('td')
         name = cells[1].text
-        counter += 1
-    
-    return counter
-active_proceedings()
+        proceedings.append(name)
+    return proceedings
+
