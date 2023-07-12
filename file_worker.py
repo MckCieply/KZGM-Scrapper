@@ -3,6 +3,9 @@ from scrapper import names_of_proceedings
 def file_check(new_length):
     with open("proceedings.txt", "r+", encoding="utf-8") as f:
         old_proceedings = f.readlines()
+        #truncating file
+        f.truncate(0)
+        f.seek(0)
         active_proceedings = names_of_proceedings()
         #Checking for diffrence in length
         old_length = len(old_proceedings)
