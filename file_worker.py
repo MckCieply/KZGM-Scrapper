@@ -21,7 +21,7 @@ def file_check(new_length):
                 #truncating file
                 f.truncate(0)
                 f.seek(0)
-                
+
                 for element in active_proceedings:
                     f.write(element)
                 return old_proceedings
@@ -33,4 +33,4 @@ def contains_objective(old_proceedings):
         old_renovations = [line for line in old_proceedings if "Remont mieszkań" in line]
         new_renovations = [line for line in new_proceedings if "Remont mieszkań" in line]
         diffrence = [line for line in new_renovations if line not in old_renovations]
-        return diffrence != None
+        return diffrence != []
