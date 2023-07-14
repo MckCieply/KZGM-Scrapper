@@ -23,7 +23,10 @@ def names_of_proceedings():
     rows = scrapper_innit()
     for row in rows:
         cells = row.find_all('td')
-        name = cells[1].text
-        proceedings.append(name+"\n")
-    return proceedings
 
+        #Getting name and proceeding link
+        name = cells[1].text
+        link = "https://platformazakupowa.pl"+row.find('a')['href']
+        
+        proceedings.append(name + "|" + link + "\n")
+    return proceedings
