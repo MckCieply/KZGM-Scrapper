@@ -1,9 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
+#URL of page with proceedings of intrest
+URL = "https://platformazakupowa.pl/pn/kzgm_katowice/proceedings"
 
 #Establish connection and scrape rows
 def scrapper_innit():
-    URL = "https://platformazakupowa.pl/pn/kzgm_katowice/proceedings"
     request = requests.get(URL)
     soup = BeautifulSoup(request.content, 'html.parser')
 

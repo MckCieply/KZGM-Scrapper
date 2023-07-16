@@ -1,5 +1,8 @@
 from scrapper import names_of_proceedings
 
+#Phrase of intrest in proceeding names we are looking for 
+phrase = "Remont mieszkań"
+
 def file_check(new_length):
     with open("proceedings.txt", "r+", encoding="utf-8") as f:
         old_proceedings = f.readlines()
@@ -29,11 +32,11 @@ def file_check(new_length):
                     f.write(element)
                 return old_proceedings
 
-#checking if there were new renovations proceedings
+#checking if there were new proceedings of intrest
 def contains_objective(old_proceedings):
     with open("proceedings.txt", "r", encoding="utf-8") as f:
         new_proceedings = f.readlines()
-        old_renovations = [line for line in old_proceedings if "Remont mieszkań" in line]
-        new_renovations = [line for line in new_proceedings if "Remont mieszkań" in line]
-        diffrence = [line for line in new_renovations if line not in old_renovations]
+        old_intrest = [line for line in old_proceedings if phrase in line]
+        new_intrest = [line for line in new_proceedings if phrase in line]
+        diffrence = [line for line in new_intrest if line not in old_intrest]
         return diffrence
